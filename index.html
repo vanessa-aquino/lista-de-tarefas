@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lista de Tarefas</title>
 
+    <!--Fontes-->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+      </style>
     <!-- ESTILOS -->
-    <link rel="stylesheet" href="./reset.css" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./assets/styles/reset.css" />
+    <link rel="stylesheet" href="./assets/styles/style.css" />
 
     <!-- SCRIPTS -->
     <script src="./script.js" defer></script>
@@ -28,7 +32,7 @@
     <!-- Conteúdo Principal -->
     <main class="main__container">
       <!-- Formulário para adicionar nova task -->
-      <form class="form__container">
+      <form class="form__container"> 
         <h2 class="form__title title2">Inserir tarefa</h2>
         <div class="form__input-container">
           <input
@@ -51,7 +55,7 @@
 
       <!-- Listagem de tasks -->
       <section class="tasks__container">
-        <h2>Tarefas</h2>
+        <h2 class="form__title title2">Tarefas</h2>
         <ul class="tasks__list">
           <!-- Task Exemplo 1 -->
           <li class="task__item">
