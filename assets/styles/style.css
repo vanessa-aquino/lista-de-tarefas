@@ -242,7 +242,8 @@ select:focus{
         }
 
         .task__item {
-            width: 70%;
+            width: auto;
+            height: 100px;
             padding-right: 1;
         }
     }
