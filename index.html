@@ -36,12 +36,13 @@
         <h2 class="form__title title2">Inserir tarefa</h2>
         <div class="form__input-container">
           <input
+            required
             id="input_title"
             class="form__input--text input__box"
             type="text"
             placeholder="Digitar titulo da tarefa"
           />
-          <select class="form__input--priority input__box">
+          <select class="form__input--priority input__box" id="select-options" required>
             <option value="">Selecionar tipo</option>
             <option value="urgente">Urgente</option>
             <option value="importante">Importante</option>

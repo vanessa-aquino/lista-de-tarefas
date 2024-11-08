@@ -127,6 +127,10 @@ body {
     gap: 1rem;
 }
 
+select {
+    appearance: none;
+}
+
 p {
     font-size: 0.800rem;
     font-weight: 400;

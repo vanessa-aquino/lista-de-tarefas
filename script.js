@@ -13,7 +13,7 @@ const tasks = [
 
 function renderElements(arr) {
   const ulElement = document.querySelector('.tasks__list'); 
-  document.querySelector('.tasks__list').innerHTML = '';
+  ulElement.innerHTML = '';
 
   arr.forEach(task => {
     ulElement.appendChild(createTaskItem(task)); 
@@ -52,5 +52,33 @@ function createTaskItem(task) {
 
   return createLi;
 }
-
 renderElements(tasks);
+
+
+function addTask() {
+  const taskInput = document.getElementById('input_title');
+  const selectType = document.getElementById('select-options');
+  const inputValue = taskInput.value;
+  const selectTypeValue = selectType.value;
+
+  
+  tasks.push({
+    title: inputValue,
+    type: selectTypeValue,
+  });
+  
+  console.log(tasks)
+
+  renderElements(tasks);
+} 
+
+const button = document.querySelector('.form__button--add-task');
+button.addEventListener('click', (event) => {
+  event.preventDefault();
+  addTask()
+    
+  })
+  
+  
+
+  
