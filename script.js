@@ -1,14 +1,4 @@
 const tasks = [
-  { title: "Comprar comida para o gato", type: "Urgente" },
-  { title: "Consertar Computador", type: "Importante" },
-  { title: "Beber água", type: "Normal" },
-  { title: "Enviar relatório trimestral", type: "Importante" },
-  { title: "Fazer exercícios físicos", type: "Normal" },
-  { title: "Agendar consulta médica", type: "Urgente" },
-  { title: "Ler pelo menos um capítulo de um livro", type: "Normal" },
-  { title: "Limpar a despensa", type: "Importante" },
-  { title: "Pagar a conta de energia", type: "Urgente" },
-  { title: "Assistir a um documentário interessante", type: "Normal" },
 ];
 
 function renderElements(arr) {
@@ -30,11 +20,11 @@ function createTaskItem(task) {
   const createSpan = document.createElement('span');
   createSpan.classList.add('task-type');
 
-  if (task.type === 'Urgente') {
+  if (task.type === 'urgente') {
     createSpan.classList.add('span-urgent');
-  } else if (task.type === 'Importante') {
+  } else if (task.type === 'importante') {
     createSpan.classList.add('span-important');
-  } else if (task.type === 'Normal') {
+  } else if (task.type === 'normal') {
     createSpan.classList.add('span-normal');
   }
 
@@ -43,6 +33,20 @@ function createTaskItem(task) {
 
   const createButton = document.createElement('button');
   createButton.classList.add('task__button--remove-task');
+
+  createButton.setAttribute('data-title', task.title);
+
+  createButton.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const taskTitle = createButton.getAttribute('data-title');
+    const taskIndex = tasks.findIndex(t => t.title === taskTitle);
+    if(taskIndex !== -1) {
+      tasks.splice(taskIndex, 1);
+      renderElements(tasks);
+    }
+
+  });
 
   createDiv.appendChild(createSpan);
   createDiv.appendChild(createParagraph);
@@ -60,7 +64,6 @@ function addTask() {
   const selectType = document.getElementById('select-options');
   const inputValue = taskInput.value;
   const selectTypeValue = selectType.value;
-
   
   tasks.push({
     title: inputValue,
