@@ -1,5 +1,8 @@
-const tasks = [
-];
+const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+function saveToLocalStorage() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
 
 function renderElements(arr) {
   const ulElement = document.querySelector('.tasks__list'); 
@@ -43,6 +46,7 @@ function createTaskItem(task) {
     const taskIndex = tasks.findIndex(t => t.title === taskTitle);
     if(taskIndex !== -1) {
       tasks.splice(taskIndex, 1);
+      saveToLocalStorage();
       renderElements(tasks);
     }
 
@@ -64,23 +68,27 @@ function addTask() {
   const selectType = document.getElementById('select-options');
   const inputValue = taskInput.value;
   const selectTypeValue = selectType.value;
+
+  if (!inputValue) return;
   
   tasks.push({
     title: inputValue,
     type: selectTypeValue,
   });
-  
-  console.log(tasks)
 
+  saveToLocalStorage();
   renderElements(tasks);
+
 } 
 
 const button = document.querySelector('.form__button--add-task');
 button.addEventListener('click', (event) => {
   event.preventDefault();
   addTask()
-    
-  })
+
+})
+
+renderElements(tasks);
   
   
 
